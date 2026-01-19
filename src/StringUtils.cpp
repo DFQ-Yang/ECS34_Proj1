@@ -1,10 +1,32 @@
 #include "StringUtils.h"
+#include "stdexcept"
+#include "math.h"
 
 namespace StringUtils{
 
+//I actually really want to throw some exceptions when input illegal value, because dont know
+//what expected to return if failed. However, there is a noexcept.
 std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
-    // Replace code here
-    return "";
+    ssize_t sliceLength;
+    const ssize_t strLength = str.length();
+
+    //Check if the start and end is valid
+    if(std::abs(start) > strLength | strLength < std::abs(end)){
+        return "";
+    }
+
+    //Trans negative value to positive
+    if(end <= 0) end = strLength + end;
+    if(start < 0) start = strLength + start;
+    sliceLength = end - start;
+
+    //Check if sliceLegth to slice is legal
+    if(sliceLength < 0) return "";
+
+    //Do slice
+    std::string sliced = str.substr(start, sliceLength);
+
+    return sliced;
 }
 
 std::string Capitalize(const std::string &str) noexcept{
