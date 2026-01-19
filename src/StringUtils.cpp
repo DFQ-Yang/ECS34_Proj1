@@ -25,12 +25,25 @@ std::string Upper(const std::string &str) noexcept{
             res += str.at(i);
         }
     }
-    
+
     return res;
 }
 
 std::string Lower(const std::string &str) noexcept{
-    // Replace code here
+    std::string res;
+
+    //Do upperCase
+    for(int i = 0; i < str.length(); i++){
+        if(str.at(i) >= 65 && str.at(i) <= 90){
+            char ch = str.at(i) + 32;
+            res += ch;
+        }
+        else{
+            res += str.at(i);
+        }
+    }
+    
+    return res;// Replace code here
     return "";
 }
 
