@@ -28,7 +28,20 @@ TEST(StringUtilsTest, Upper){
 }
 
 TEST(StringUtilsTest, Lower){
-    
+    std::string lowered;
+    //Test empty and blank
+    lowered = StringUtils::Lower("");
+    EXPECT_EQ(lowered, "");
+    lowered = StringUtils::Lower("           ");
+    EXPECT_EQ(lowered, "           ");
+
+    //Test with numbers
+    lowered = StringUtils::Lower("Only 90 more MB remaining, what can I do....");
+    EXPECT_EQ(lowered, "only 90 more mb remaining, what can i do....");
+
+    //Test normal
+    lowered = StringUtils::Lower("If it is not the problem of WSL");
+    EXPECT_EQ(lowered, "if it is not the problem of wsl");
 }
 
 TEST(StringUtilsTest, LStrip){
