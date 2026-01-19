@@ -13,8 +13,20 @@ std::string Capitalize(const std::string &str) noexcept{
 }
 
 std::string Upper(const std::string &str) noexcept{
-    // Replace code here
-    return "";
+    std::string res;
+
+    //Do upperCase
+    for(int i = 0; i < str.length(); i++){
+        if(str.at(i) >= 97 && str.at(i) <= 122){
+            char ch = str.at(i) - 32;
+            res += ch;
+        }
+        else{
+            res += str.at(i);
+        }
+    }
+    
+    return res;
 }
 
 std::string Lower(const std::string &str) noexcept{
