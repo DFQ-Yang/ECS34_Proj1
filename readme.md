@@ -1,0 +1,1 @@
+## I asked AI telling me how a result looks like in python with a given input.
