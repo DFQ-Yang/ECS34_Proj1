@@ -4,15 +4,16 @@ CC=gcc
 CXX=g++
 
 # Define the directories
-INC_DIR			= ../include
-SRC_DIR			= ../src
-BIN_DIR			= ./bin
-OBJ_DIR			= ./obj
-LIB_DIR			= ./lib
-TESTSRC_DIR		= ../testsrc
-TESTOBJ_DIR		= ./testobj
-TESTBIN_DIR		= ./testbin
-TESTCOVER_DIR 	= ./htmlcov
+INC_DIR			= ./include
+SRC_DIR			= ./src
+BIN_DIR			= ./build/bin
+OBJ_DIR			= ./build/obj
+LIB_DIR			= ./build/lib
+TESTSRC_DIR		= ./testsrc
+TESTOBJ_DIR		= ./build/testobj
+TESTBIN_DIR		= ./build/testbin
+TESTCOVER_DIR 	= ./build/htmlcov
+BUILD_DIR  		= ./build
 
 # Define the flags
 DEFINES			= 
@@ -52,6 +53,7 @@ $(TESTOBJ_DIR)/StringUtils.o: $(SRC_DIR)/StringUtils.cpp
 
 .PHONY: directories
 directories:
+	mkdir -p $(BUILD_DIR)
 	mkdir -p $(BIN_DIR)
 	mkdir -p $(OBJ_DIR)
 	mkdir -p $(LIB_DIR)
@@ -66,5 +68,6 @@ clean::
 	rm -rf $(TESTBIN_DIR)
 	rm -rf $(TESTOBJ_DIR)
 	rm -rf $(TESTCOVER_DIR)
+	rm -rf $(BUILD_DIR)
 
 .PHONY: clean
