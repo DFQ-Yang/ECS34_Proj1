@@ -96,18 +96,38 @@ std::string Lower(const std::string &str) noexcept{
 }
 
 std::string LStrip(const std::string &str) noexcept{
-    // Replace code here
-    return "";
+    //Check empty
+    if(str == "") return str;
+    int index = 0;
+    
+    //checking char by char
+    for(; index < str.length(); index++){
+        if(str.at(index) != 32 && str.at(index) != 9){
+            break;
+        }
+    }
+
+    return StringUtils::Slice(str, index);
 }
 
 std::string RStrip(const std::string &str) noexcept{
-    // Replace code here
-    return "";
+    //Check empty
+    if(str == "") return str;
+    int index = str.length() - 1;
+
+    //checking char by char
+    for(; index >= 0; index--){
+        if(str.at(index) != 32 && str.at(index) != 9){ //32 is space, 9 is tab
+            break;
+        }
+    }
+
+    return StringUtils::Slice(str, 0, index + 1);
 }
 
 std::string Strip(const std::string &str) noexcept{
-    // Replace code here
-    return "";
+    //Combine LStrip and RStrip is BothStrip
+    return StringUtils::RStrip(StringUtils::LStrip(str));
 }
 
 std::string Center(const std::string &str, int width, char fill) noexcept{
