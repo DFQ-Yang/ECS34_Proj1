@@ -106,26 +106,26 @@ TEST(StringUtilsTest, LStrip){
 TEST(StringUtilsTest, RStrip){
     std::string striped;
    //Test empty and blank
-   striped = StringUtils::LStrip("");
+   striped = StringUtils::RStrip("");
    EXPECT_EQ(striped, "");
-   striped = StringUtils::LStrip("           ");
+   striped = StringUtils::RStrip("           ");
    EXPECT_EQ(striped, "");
 
    //Test normal
-   striped = StringUtils::LStrip("       WSL is so bad which occupied my C disk  ");
+   striped = StringUtils::RStrip("       WSL is so bad which occupied my C disk  ");
    EXPECT_EQ(striped, "       WSL is so bad which occupied my C disk");
 }
 
 TEST(StringUtilsTest, Strip){
     std::string striped;
    //Test empty and blank
-   striped = StringUtils::LStrip("");
+   striped = StringUtils::Strip("");
    EXPECT_EQ(striped, "");
-   striped = StringUtils::LStrip("           ");
+   striped = StringUtils::Strip("           ");
    EXPECT_EQ(striped, "");
 
    //Test normal
-   striped = StringUtils::LStrip("       WSL is so bad which occupied my C disk  ");
+   striped = StringUtils::Strip("       WSL is so bad which occupied my C disk  ");
    EXPECT_EQ(striped, "WSL is so bad which occupied my C disk");
 }
 

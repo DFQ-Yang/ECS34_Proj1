@@ -121,13 +121,13 @@ std::string RStrip(const std::string &str) noexcept{
             break;
         }
     }
-
+    if(index == -1) return "";
     return StringUtils::Slice(str, 0, index + 1);
 }
 
 std::string Strip(const std::string &str) noexcept{
     //Combine LStrip and RStrip is BothStrip
-    return StringUtils::RStrip(StringUtils::LStrip(str));
+    return StringUtils::LStrip(StringUtils::RStrip(str));
 }
 
 std::string Center(const std::string &str, int width, char fill) noexcept{
