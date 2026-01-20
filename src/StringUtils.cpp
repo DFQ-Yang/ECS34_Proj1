@@ -298,8 +298,27 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
 }
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
-    // Replace code here
-    return 0;
-}
+    //empty check
+    if(left == "") return right.length();
+    if(right == "") return left.length();
 
-};
+    //check same
+    if(left.compare(right) == 0) return 0;
+
+    int ic = 0;
+    int length;
+    std::vector<std::vector<int>> arr;
+    if(left.length() >= right.length()) length = left.length();
+    else length = right.length();
+    std::string l = left;
+    std::string r = right;
+
+    //check ignorecase
+    if(ignorecase){
+        l = StringUtils::Lower(left);
+        r = StringUtils::Lower(right);
+    }
+
+    return 0;
+    }   
+}
