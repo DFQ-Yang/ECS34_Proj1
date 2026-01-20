@@ -1,4 +1,4 @@
-#include "StringUtils.h"
+#include "../include/StringUtils.h"
 #include "stdexcept"
 #include "math.h"
 
@@ -176,8 +176,45 @@ std::string RJust(const std::string &str, int width, char fill) noexcept{
 }
 
 std::string Replace(const std::string &str, const std::string &old, const std::string &rep) noexcept{
-    // Replace code here
-    return "";
+    std::string res = "";
+    //str empty
+    if(str == ""){
+        if(old == "") return rep;
+        return "";
+    }
+
+    //replace old empty
+    if(old == ""){
+        res += rep;
+        for(int i = 0; i < str.length(); i++){
+            res += str.at(i);
+            res += rep;
+        }
+        return res;
+    }
+
+    //replace normal
+    for(int i = 0; i < str.length(); i++){
+        if(str.at(i) == old.at(0)){
+            //if rest str length less than old, it cannot the one we look for
+            if(str.length() - i < old.length()){
+                res += str.at(i);
+                continue;
+            }
+            std::string sliced = str.substr(i, old.length());
+            //check if it is what we look for
+            if(sliced.compare(old) == 0){
+                res += rep;
+                i += old.length() - 1;
+                continue;
+            }
+        }
+        //if i is not the one looking for add this to res
+        res += str.at(i);
+    }
+
+    return res;
+    
 }
 
 std::vector< std::string > Split(const std::string &str, const std::string &splt) noexcept{

@@ -194,11 +194,15 @@ TEST(StringUtilsTest, Replace){
 
     //test normal
     res = StringUtils::Replace(str, "an", "bnb");
-    EXPECT_EQ(res, "money love bbnbbnba?");
+    EXPECT_EQ(res, "monkey love bbnbbnba?");
 
     //test empty old
     res = StringUtils::Replace("ab cd", "", "k");
     EXPECT_EQ(res, "kakbk kckdk");
+
+    //test old,str empty
+    res = StringUtils::Replace("", "", "ccc");
+    EXPECT_EQ(res, "ccc");
 }
 
 TEST(StringUtilsTest, Split){
