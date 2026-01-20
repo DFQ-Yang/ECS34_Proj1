@@ -288,5 +288,33 @@ TEST(StringUtilsTest, ExpandTabs){
 }
 
 TEST(StringUtilsTest, EditDistance){
-    
+    int res;
+
+    //Test empty left
+    res = StringUtils::EditDistance("", "abcdefg", true);
+    EXPECT_EQ(res, 7);
+
+    //test empty right
+    res = StringUtils::EditDistance("abcdefg", "");
+    EXPECT_EQ(res, 7);
+
+    //test both empty
+    res = StringUtils::EditDistance("", "", true);
+    EXPECT_EQ(res, 0);
+
+    //test same
+    res = StringUtils::EditDistance("abcdefg", "abcdefg", true);
+    EXPECT_EQ(res, 0);
+
+    //test ignore case
+    res = StringUtils::EditDistance("AbCdEfG", "abcdefg");
+    EXPECT_EQ(res, 4);
+    res = StringUtils::EditDistance("AbCdEfG", "abcdefg", true);
+    EXPECT_EQ(res, 0);
+
+    //test normal
+    res = StringUtils::EditDistance("AkbCdP", "abcdefg");
+    EXPECT_EQ(res, 6);
+    res = StringUtils::EditDistance("AkbCdP", "abcdefg", true);
+    EXPECT_EQ(res, 4);
 }
