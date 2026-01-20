@@ -181,7 +181,24 @@ TEST(StringUtilsTest, RJust){
 }
 
 TEST(StringUtilsTest, Replace){
-    
+    std::string str = "monkey love banana?";
+    std::string res;
+
+    //test empty
+    res = StringUtils::Replace("", "ana", "bnb");
+    EXPECT_EQ(res, "");
+
+    //test no exist
+    res = StringUtils::Replace("who m I", "454", "777");
+    EXPECT_EQ(res, "who m I");
+
+    //test normal
+    res = StringUtils::Replace(str, "an", "bnb");
+    EXPECT_EQ(res, "money love bbnbbnba?");
+
+    //test empty old
+    res = StringUtils::Replace("ab cd", "", "k");
+    EXPECT_EQ(res, "kakbk kckdk");
 }
 
 TEST(StringUtilsTest, Split){
