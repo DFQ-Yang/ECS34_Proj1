@@ -130,15 +130,54 @@ TEST(StringUtilsTest, Strip){
 }
 
 TEST(StringUtilsTest, Center){
-    
+    std::string str = "Thanks to AI, now I have 600 more MB space";
+    std::string centered;
+
+    //Test 0 width
+    centered = StringUtils::Center(str, 0);
+    EXPECT_EQ(centered, "Thanks to AI, now I have 600 more MB space");
+
+    //Test empty str
+    centered = StringUtils::Center("", 8, 'k');
+    EXPECT_EQ(centered, "kkkkkkkk");
+
+    //Test normal and default val, odd number
+    centered = StringUtils::Center(str, 3);
+    EXPECT_EQ(centered, " Thanks to AI, now I have 600 more MB space  ");
 }
 
 TEST(StringUtilsTest, LJust){
-    
+    std::string str = "I hate WSL, even docker";
+    std::string lsted;
+
+    //Test 0 width
+    lsted = StringUtils::LJust(str, 0);
+    EXPECT_EQ(lsted, "I hate WSL, even docker");
+
+    //Test empty str
+    lsted = StringUtils::LJust("", 8, 'k');
+    EXPECT_EQ(lsted, "kkkkkkkkI hate WSL, even docker");
+
+    //Test normal and default val
+    lsted = StringUtils::LJust(str, 4);
+    EXPECT_EQ(lsted, "    I hate WSL, even docker");
 }
 
 TEST(StringUtilsTest, RJust){
-    
+    std::string str = "I hate WSL, even docker";
+    std::string lsted;
+
+    //Test 0 width
+    lsted = StringUtils::RJust(str, 0);
+    EXPECT_EQ(lsted, "I hate WSL, even docker");
+
+    //Test empty str
+    lsted = StringUtils::RJust("", 8, 'k');
+    EXPECT_EQ(lsted, "I hate WSL, even dockerkkkkkkkk");
+
+    //Test normal and default val
+    lsted = StringUtils::RJust(str, 4);
+    EXPECT_EQ(lsted, "I hate WSL, even docker    ");
 }
 
 TEST(StringUtilsTest, Replace){
