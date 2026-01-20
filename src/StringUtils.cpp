@@ -277,8 +277,24 @@ std::string Join(const std::string &str, const std::vector< std::string > &vect)
 }
 
 std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
-    // Replace code here
-    return "";
+    //empty check
+    if(str == "") return "";
+    std::string res = "";
+
+    for(int i = 0; i < str.length(); i++){
+        //if current char is tab
+        if(str.at(i) == 9){
+            //add tabsize of space to res
+            for(int k = 0; k < tabsize; k++){
+                res += ' ';
+            }
+        }
+        //if it is not tab, directly add it to res
+        else{
+            res += str.at(i);
+        }
+    }
+    return res;
 }
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
