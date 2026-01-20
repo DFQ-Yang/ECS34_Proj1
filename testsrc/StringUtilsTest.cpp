@@ -246,7 +246,24 @@ TEST(StringUtilsTest, Split){
 }
 
 TEST(StringUtilsTest, Join){
+    std::vector<std::string> vector = {"About", "two", "hours", "left", "before", "ddl"};
+    std::string res;
     
+    //test empty vector
+    res = StringUtils::Join(" ", {});
+    EXPECT_EQ(res, "");
+
+    //test space
+    res = StringUtils::Join(" ", vector);
+    EXPECT_EQ(res, "About two hours left before ddl");
+
+    //test empty str
+    res = StringUtils::Join("", vector);
+    EXPECT_EQ(res, "Abouttwohoursleftbeforeddl");
+
+    //test str
+    res = StringUtils::Join(" but! ", vector);
+    EXPECT_EQ(res, "About but! two but! hours but! left but! before but! ddl");
 }
 
 TEST(StringUtilsTest, ExpandTabs){
