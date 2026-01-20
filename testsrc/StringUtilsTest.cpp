@@ -267,7 +267,24 @@ TEST(StringUtilsTest, Join){
 }
 
 TEST(StringUtilsTest, ExpandTabs){
-    
+    std::string res;
+    std::string test = "\tI\tstill\thave\t2\thours,\tI\tam\tso\tfast!!  ";
+
+    //test empty str
+    res = StringUtils::ExpandTabs("", 7);
+    EXPECT_EQ(res, "");
+
+    //test 0 tabspace
+    res = StringUtils::ExpandTabs(test, 0);
+    EXPECT_EQ(res, "Istillhave2hours,Iamsofast!!  ");
+
+    //test 1 tabspace
+    res = StringUtils::ExpandTabs(test, 1);
+    EXPECT_EQ(res, " I still have 2 hours, I am so fast!!  ");
+
+    //test default
+    res = StringUtils::ExpandTabs(test);
+    EXPECT_EQ(res, "    I    still    have    2    hours,    I    am    so    fast!!  ");
 }
 
 TEST(StringUtilsTest, EditDistance){
