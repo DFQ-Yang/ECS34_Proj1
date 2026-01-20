@@ -91,8 +91,7 @@ std::string Lower(const std::string &str) noexcept{
         }
     }
     
-    return res;// Replace code here
-    return "";
+    return res;
 }
 
 std::string LStrip(const std::string &str) noexcept{
