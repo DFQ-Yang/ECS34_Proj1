@@ -206,7 +206,36 @@ TEST(StringUtilsTest, Replace){
 }
 
 TEST(StringUtilsTest, Split){
-    
+    std::string str = "no time left !!!!";
+    std::vector<std::string> res;
+    std::vector<std::string> tmp;
+
+    //test empty str
+    res = StringUtils::Split("", "aaa");
+    EXPECT_EQ(res, tmp);
+
+    //test normal
+    res = StringUtils::Split(str, "e");
+    tmp.clear();
+    tmp.push_back("no tim");
+    tmp.push_back(" l");
+    tmp.push_back("ft !!!!");
+    EXPECT_EQ(res, tmp);
+
+    //test piles
+    res = StringUtils::Split(str, "!");
+    tmp.clear();
+    tmp.push_back("no time left ");
+    EXPECT_EQ(res, tmp);
+
+    //test empty
+    res = StringUtils::Split(str, "");
+    tmp.clear();
+    tmp.push_back("no");
+    tmp.push_back("time");
+    tmp.push_back("left");
+    tmp.push_back("!!!!");
+    EXPECT_EQ(res, tmp);
 }
 
 TEST(StringUtilsTest, Join){
