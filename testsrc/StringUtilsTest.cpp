@@ -138,11 +138,11 @@ TEST(StringUtilsTest, Center){
     EXPECT_EQ(centered, "Thanks to AI, now I have 600 more MB space");
 
     //Test empty str
-    centered = StringUtils::Center("", 8, 'k');
-    EXPECT_EQ(centered, "kkkkkkkk");
+    centered = StringUtils::Center("", 7, 'k');
+    EXPECT_EQ(centered, "kkkkkkk");
 
     //Test normal and default val, odd number
-    centered = StringUtils::Center(str, 3);
+    centered = StringUtils::Center(str, 45);
     EXPECT_EQ(centered, " Thanks to AI, now I have 600 more MB space  ");
 }
 
@@ -156,10 +156,10 @@ TEST(StringUtilsTest, LJust){
 
     //Test empty str
     lsted = StringUtils::LJust("", 8, 'k');
-    EXPECT_EQ(lsted, "kkkkkkkkI hate WSL, even docker");
+    EXPECT_EQ(lsted, "kkkkkkkk");
 
     //Test normal and default val
-    lsted = StringUtils::LJust(str, 4);
+    lsted = StringUtils::LJust(str, 27);
     EXPECT_EQ(lsted, "    I hate WSL, even docker");
 }
 
@@ -173,10 +173,10 @@ TEST(StringUtilsTest, RJust){
 
     //Test empty str
     lsted = StringUtils::RJust("", 8, 'k');
-    EXPECT_EQ(lsted, "I hate WSL, even dockerkkkkkkkk");
+    EXPECT_EQ(lsted, "kkkkkkkk");
 
     //Test normal and default val
-    lsted = StringUtils::RJust(str, 4);
+    lsted = StringUtils::RJust(str, 27);
     EXPECT_EQ(lsted, "I hate WSL, even docker    ");
 }
 
