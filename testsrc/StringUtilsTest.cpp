@@ -236,6 +236,13 @@ TEST(StringUtilsTest, Split){
     tmp.push_back("left");
     tmp.push_back("!!!!");
     EXPECT_EQ(res, tmp);
+
+    //test string
+    res = StringUtils::Split(str, "o time left !!!");
+    tmp.clear();
+    tmp.push_back("n");
+    tmp.push_back("!");
+    EXPECT_EQ(res, tmp);
 }
 
 TEST(StringUtilsTest, Join){

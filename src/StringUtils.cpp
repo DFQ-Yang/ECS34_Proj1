@@ -218,8 +218,47 @@ std::string Replace(const std::string &str, const std::string &old, const std::s
 }
 
 std::vector< std::string > Split(const std::string &str, const std::string &splt) noexcept{
-    // Replace code here
-    return {};
+    std::vector<std::string> res;
+    std::string split = splt;
+    //check empty
+    if(str == "")return res;
+
+    //check empty splt
+    if(splt == "") split = " ";
+
+    int start = 0;
+    int end = 0;
+
+    for(int i = 0; i < str.length(); i++){
+        if(str.at(i) == split.at(0)){
+            //if rest str length less than split, it cannot the one we look for
+            if(str.length() - i < split.length()){
+                end ++;
+                continue;
+            }
+            std::string sliced = str.substr(i, split.length());
+            //check if it is what we look for
+            if(sliced.compare(split) == 0){
+                std::string tmp = StringUtils::Slice(str, start, end);
+                //Check countinous matching
+                if(tmp != ""){
+                    res.push_back(tmp);
+                }
+                i += split.length() - 1;
+                end += split.length();
+                start = end;
+                continue;
+            }
+        }
+        //if i is not the one looking for, end++
+        end ++;
+    }
+    //deal with rest
+    if(end - start > 0){
+        res.push_back(StringUtils::Slice(str, start, end));
+    }
+
+    return res;
 }
 
 std::string Join(const std::string &str, const std::vector< std::string > &vect) noexcept{
